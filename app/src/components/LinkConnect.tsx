@@ -23,8 +23,6 @@ const LinkConnect = () => {
 
       const d = await response.json();
 
-      console.log({ data: d });
-
       return d;
     },
   });

@@ -20,11 +20,10 @@ app.use("/", router);
 // Plaid code
 
 app.post("/create-token", async (req, res) => {
-  console.log(req.body);
   const clientUserId = "user-korede"; // FIXME: should be gotten from the database.
 
   try {
-    const data = await plaidClient.linkTokenCreate({
+    const { data } = await plaidClient.linkTokenCreate({
       user: {
         client_user_id: clientUserId,
       },
@@ -38,12 +37,10 @@ app.post("/create-token", async (req, res) => {
 
     return res.status(201).json(data);
   } catch (error) {
-    return res
-      .status(400)
-      .json({
-        message: "An error occured while trying to link Plaid account.",
-        error,
-      });
+    return res.status(400).json({
+      message: "An error occured while trying to link Plaid account.",
+      error,
+    });
   }
 });
 
