@@ -29,6 +29,16 @@
         "projectId": "61ab1804-366e-4882-aa22-c5e2a51eced1"
       }
     },
-    "owner": "korede360"
+    "owner": "korede360",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 33
+          }
+        }
+      ]
+    ]
   }
 }
