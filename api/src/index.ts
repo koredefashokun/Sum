@@ -38,7 +38,12 @@ app.post("/create-token", async (req, res) => {
 
     return res.status(201).json(data);
   } catch (error) {
-    console.log({ error });
+    return res
+      .status(400)
+      .json({
+        message: "An error occured while trying to link Plaid account.",
+        error,
+      });
   }
 });
 

@@ -12,6 +12,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "bundleIdentifier": "dev.overt.sum",
       "supportsTablet": true
     },
     "android": {
