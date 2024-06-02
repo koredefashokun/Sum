@@ -36,6 +36,9 @@
         {
           "android": {
             "compileSdkVersion": 33
+          },
+          "ios": {
+            "deploymentTarget": "14.0"
           }
         }
       ]
