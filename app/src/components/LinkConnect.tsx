@@ -1,17 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { Button, View, Text, SafeAreaView } from "react-native";
+import { open, create } from "react-native-plaid-link-sdk";
 import {
-  LinkExit,
-  LinkIOSPresentationStyle,
-  LinkLogLevel,
-  LinkOpenProps,
-  LinkSuccess,
-  LinkTokenConfiguration,
-  open,
-  create,
-  dismissLink,
-} from "react-native-plaid-link-sdk";
+  createLinkOpenProps,
+  createLinkTokenConfiguration,
+} from "../utils/plaid";
 
 const LinkConnect = () => {
   const { data, isPending, error, mutateAsync } = useMutation({
@@ -61,33 +55,5 @@ const LinkConnect = () => {
     </SafeAreaView>
   );
 };
-
-function createLinkTokenConfiguration(
-  token: string,
-  noLoadingState: boolean = false,
-): LinkTokenConfiguration {
-  return {
-    token: token,
-    // Hides native activity indicator if true.
-    noLoadingState: noLoadingState,
-  };
-}
-
-function createLinkOpenProps(): LinkOpenProps {
-  return {
-    onSuccess: (success: LinkSuccess) => {
-      // User was able to successfully link their account.
-      console.log("Success: ", success);
-    },
-    onExit: (linkExit: LinkExit) => {
-      // User exited Link session. There may or may not be an error depending on what occured.
-      console.log("Exit: ", linkExit);
-      dismissLink();
-    },
-    // MODAL or FULL_SCREEEN presentation on iOS. Defaults to MODAL.
-    iOSPresentationStyle: LinkIOSPresentationStyle.MODAL,
-    logLevel: LinkLogLevel.ERROR,
-  };
-}
 
 export default LinkConnect;
