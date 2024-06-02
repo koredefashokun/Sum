@@ -14,7 +14,11 @@ const MainTab = () => {
   return (
     <MainTabNavigator.Navigator>
       <MainTabNavigator.Screen name="Home" component={Home} />
-      <MainTabNavigator.Screen name="Account" component={AccountStack} />
+      <MainTabNavigator.Screen
+        name="Account"
+        component={AccountStack}
+        options={{ headerShown: false }}
+      />
     </MainTabNavigator.Navigator>
   );
 };
